@@ -6,7 +6,8 @@ export function createEmployee() {
         email : "",
         department : "",
         phone : "",
-        address : "",
+        street : "",
+        city: "",
         birthday : "",
         startDate : "",
         position : "",
@@ -14,6 +15,9 @@ export function createEmployee() {
         vacationDays : "",
         salary : "",
         bank : "",
-        iban : ""
+        iban : "",
+        taxnumber : "",
+        socialsecurity : "",
+        healthinsurance : ""
     };
 }
