@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import EditEmployeeDetail from './EditEmployeeDetail';
+import Abwesenheitskalender from '../Abwesenheitsplan/Abwesenheitsplan';
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+    const [showCalendar, setShowCalendar] = useState(false);
+
 
     useEffect(() => {
         const storedEmployees = JSON.parse(localStorage.getItem("employees")) || [];
@@ -14,10 +17,10 @@ function EmployeeList() {
     const handleEmployeeClick = (employee) => {
         setSelectedEmployee(employee);
         setIsEditing(false);
+        setShowCalendar(false);
     };
 
     const renderEmployeeDetails = (employee) => {
-        //const employeeName = `${employee.firstName} ${employee.lastName}`;
         return (
             <div>
                 <h3>Details für {employee.firstName} {employee.lastName}</h3>
@@ -38,10 +41,14 @@ function EmployeeList() {
                 <p><strong>Krankenkasse:</strong> {employee.healthinsurance}</p>
                 <button onClick={(e) => handleEdit(employee.id, e)}>Bearbeiten</button>
                 <button onClick={(e) => handleDelete(employee, e)}>Mitarbeiter löschen</button>
-                <button onClick={() => setSelectedEmployee(null)}>Zurück zur Liste</button>
+                <button onClick={() => setShowCalendar(true)}>Abwesenheitsplanung ansehen</button>
+                <button onClick={() => { setSelectedEmployee(null); setShowCalendar(false); }}>Zurück zur Liste</button>
+
             </div>
         );
     };
+
+    
 
     const handleDelete = (employee, e) => {
         e.stopPropagation();
@@ -93,7 +100,15 @@ function EmployeeList() {
          ) : (
             <div className='employee-details'>
                 {!isEditing ? (
-                renderEmployeeDetails(selectedEmployee)
+                <div>
+                    {renderEmployeeDetails(selectedEmployee)}
+                    {showCalendar === true && (
+                        <>
+                            <Abwesenheitskalender employee={selectedEmployee} />
+                            <button onClick={() => setShowCalendar(false)}>Zurück zu Mitarbeiterdetails</button>
+                        </>
+                    )}
+                </div>
             ) : (
                 <EditEmployeeDetail
                     employee={selectedEmployee}
