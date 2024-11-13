@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EmployeeForm from "./EmployeeForm";
+
 
 function EditEmployeeDetail({ employee, onSave, onCancel}) {
     const [editedEmployee, setEditedEmployee] = useState(employee);
@@ -24,7 +24,7 @@ function EditEmployeeDetail({ employee, onSave, onCancel}) {
     return (
         <div>
             <h3>Bearbeiten: {employee.firstName} {employee.lastName}</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text" name="firstName" value={editedEmployee.firstName} onChange={handleChange} placeholder="Vorname"/>
                 <input type="text" name="lastName" value={editedEmployee.lastName} onChange={handleChange} placeholder="Nachname" />
                 <input type="id" name="id" value={editedEmployee.id} onChange={handleChange} placeholder="Mitarbeiternummer" disabled/>
