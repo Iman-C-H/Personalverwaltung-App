@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import EditEmployeeDetail from './EditEmployeeDetail';
 import Abwesenheitskalender from '../Abwesenheitsplan/Abwesenheitsplan';
+import EmployeeDocuments from '../Dokumente/Dokumente';
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
+    const [showDocuments, setShowDocuments] = useState(false);
+
 
 
     useEffect(() => {
@@ -42,6 +45,7 @@ function EmployeeList() {
                 <button onClick={(e) => handleEdit(employee.id, e)}>Bearbeiten</button>
                 <button onClick={(e) => handleDelete(employee, e)}>Mitarbeiter löschen</button>
                 <button onClick={() => setShowCalendar(true)}>Abwesenheitsplanung ansehen</button>
+                <button onClick={() => setShowDocuments(true)}>Dokumente verwalten</button>
                 <button onClick={() => { setSelectedEmployee(null); setShowCalendar(false); }}>Zurück zur Liste</button>
 
             </div>
@@ -108,6 +112,15 @@ function EmployeeList() {
                             <button onClick={() => setShowCalendar(false)}>Zurück zu Mitarbeiterdetails</button>
                         </>
                     )}
+
+                    {showDocuments && (
+                        <>
+                        <EmployeeDocuments
+                        employeeId={selectedEmployee.id}
+                        onClose={() => setShowDocuments(false)}
+                        />
+                        </>
+                    )}   
                 </div>
             ) : (
                 <EditEmployeeDetail
