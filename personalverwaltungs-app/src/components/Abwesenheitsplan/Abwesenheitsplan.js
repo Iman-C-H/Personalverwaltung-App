@@ -10,6 +10,8 @@ const localizer = momentLocalizer(moment);
 function Abwesenheitskalender({employee}) {
     const [events, setEvents] = useState([]);
     const [newEvent, setNewEvent] = useState({ title: '', start: '', end: '' });
+    const [editingEvent, setEditingEvent] = useState(null);
+    const [selectedEvent, setSelectedEvent] = useState(null);
     
     useEffect(() => {
         if (employee && employee.id) {
@@ -26,7 +28,7 @@ function Abwesenheitskalender({employee}) {
     }, [employee]);
 
     // Event hinzufügen
-    const handleAddEvent = () => {
+    const handleSaveEvent = () => {
         if (newEvent.title && newEvent.start && newEvent.startTime &&  newEvent.end && newEvent.endTime) {
 
             const start = new Date(newEvent.start);
@@ -42,30 +44,50 @@ function Abwesenheitskalender({employee}) {
                 return;
             }
 
-            const updatedEvents = [
-                ...events,
-                {
-                    title: newEvent.title,
-                    start: start,  // `start` als Date-Objekt
-                    end: end       // `end` als Date-Objekt
-                }
-            ];
+            const updatedEvents = editingEvent
+            ? events.map(event =>
+                event === editingEvent
+                    ? { ...event, title: newEvent.title, start, end }
+                    : event
+            )
+            : [...events, { title: newEvent.title, start, end }];
             setEvents(updatedEvents);
             localStorage.setItem(`absences-${employee.id}`, JSON.stringify(updatedEvents));
             setNewEvent({ title: "", start: "", startTime: "", end: "", endTime: ""});
+            setEditingEvent(null);
+            setSelectedEvent(null);
         } else {
             alert("Bitte alle Felder ausfüllen!");
         }
     };
     // Event löschen
-    const handleDeleteEvent = (eventToDelete) => {
-        const updatedEvents = events.filter(event => 
-            event.title !== eventToDelete.title ||
-            event.start.getTime() !== eventToDelete.start.getTime() ||
-            event.end.getTime() !== eventToDelete.end.getTime()
+    const handleDeleteSelectedEvent = (eventToDelete) => {
+        const confirmed = window.confirm(`Sind Sie sicher, die Abwesenheit ${eventToDelete.title} aus dem System gelöscht werden soll?`);
+            //const confirmed = window.confirm(`Sind Sie sicher, die Abwesenheit ${eventToDelete.title} aus dem System gelöscht werden soll?`);
+            if (confirmed) {
+                const updatedEvents = events.filter(event => 
+                    event.title !== eventToDelete.title ||
+                    event.start.getTime() !== eventToDelete.start.getTime() ||
+                    event.end.getTime() !== eventToDelete.end.getTime()
         );  
         setEvents(updatedEvents);
         localStorage.setItem(`absences-${employee.id}`, JSON.stringify(updatedEvents));
+        setSelectedEvent(null);
+        } else {
+            console.log("Abwesenheit wurde nicht gelöscht.")
+        }
+    };
+
+    // Event bearbeiten
+    const handleEditEvent = ( event )  => {
+       setEditingEvent(event);
+       setNewEvent({
+        title: event.title,
+        start: moment(event.start).format("YYYY-MM-DD"),
+        end: moment(event.end).format("YYYY-MM-DD"),
+        startTime: moment(event.start).format("HH:mm"),
+        endTime: moment(event.end).format("HH:mm"),
+       });
     };
         
 
@@ -96,7 +118,10 @@ function Abwesenheitskalender({employee}) {
                     <input type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
                     <input type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
                     <input type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
-                    <button onClick={handleAddEvent}>Abwesenheit hinzufügen</button>
+                    <button onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Abwesenheit hinzufügen"}</button>
+                    {selectedEvent && (
+                        <button onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Abwesenheit löschen</button>
+                    )}
                 </div>
 
             <Calendar
@@ -106,7 +131,8 @@ function Abwesenheitskalender({employee}) {
             endAccessor="end"
             style={{ height: 500}}
             selectable
-            onSelectEvent={(event) => handleDeleteEvent(event)}
+            onDoubleClickEvent={handleEditEvent}
+            onSelectEvent={(event) => setSelectedEvent(event)}
             views={["month", "week", "day"]}
             step={60}
             min={new Date(2024, 0, 1, 9, 0)}
