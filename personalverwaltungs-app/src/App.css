@@ -1,6 +1,15 @@
 
 #root {
   background-color: #003D4D;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.logo-container.animated-logo {
+  min-height: 100%;
 }
 
 .container {
@@ -11,6 +20,8 @@
   justify-content: center;
   flex-direction: column;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  flex: 1;
+  flex-grow: 1;
 }
 
 /* ///Button zum Mitarbeiter hinzufügen //// */
@@ -153,4 +164,6 @@ footer {
   text-align: center;
   z-index: 10;
   color: black;
+  margin-top: auto;
+  
 }
