@@ -1,4 +1,5 @@
 import { Router } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
 
 function HomePage() {
   return (
@@ -13,9 +14,11 @@ function HomePage() {
         </div>
 
         <div>
-          <img src="/Bild.svg" alt="Illustration" />
+            <Sidebar className="animated-bar" />
         </div>
-      </div>
+
+    </div>
+
 
   );
 }

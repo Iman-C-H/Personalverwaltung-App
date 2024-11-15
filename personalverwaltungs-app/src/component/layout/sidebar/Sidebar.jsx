@@ -1,11 +1,8 @@
-import {
-  BrowserRouter as Router,
-  Link,
-} from "react-router-dom"; /* Route, Routes,*/
+import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
 
-function Sidebar() {
+function Sidebar({className}) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${className}`}>
       <ul>
         <li>
           <a href="HR" className="sbbuttonID">

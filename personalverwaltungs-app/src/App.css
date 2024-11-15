@@ -5,35 +5,35 @@
 
 .container {
   color: #E0E0E0;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction:column;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  flex-direction: column;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* ///Button zum Mitarbeiter hinzufügen //// */
 .main-content-flex {
-  display:flex;
+  display: flex;
   align-items: center;
   gap: 10px;
-  z-index:2;
+  z-index: 2;
 }
 
 .sidebar {
-  background-color: #006B8E; 
+  background-color: #006B8E;
   width: 200px;
-  position: fixed; /*immer sichtbar*/
+  position: fixed; /* immer sichtbar */
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: index -1;
+  z-index: 1; /* Erhöht den Wert, um sicherzustellen, dass die Sidebar sichtbar bleibt */
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 0.5;
+  padding: 0.5rem; /* korrigierter Wert */
 }
 
 .sidebar li {
@@ -42,21 +42,21 @@
 
 .sbbutton {
   display: block;
-  padding:10px 10px;
+  padding: 15px 20px;
   padding-bottom: 2px;
   color: white;
-  background-color:#003D4D;
-  text-decoration:none;
+  background-color: #003D4D;
+  text-decoration: none;
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
-  font-weight:lighter;
-  text-align:center;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .sbbuttonID {
   border-radius: 50px;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Vereinheitlicht */
 }
 
 .sidebar a {
@@ -70,11 +70,14 @@
 }
 
 header {
-  padding-top:0px;
+  padding-top: 0px;
+  z-index: 5; /* falls notwendig */
 }
-header h1{
-  font-size: 7.5rem;
-  margin: 1rem 0;
+
+header h1 {
+  font-size: 100px;
+  margin: 1rem;
+  padding-left: 50%;
 }
 
 .animated-title {
@@ -82,14 +85,13 @@ header h1{
   opacity: 0;
 }
 
-/* anpassung des Logos nötig*/
 .logo-container {
-  right:10px;
-  z-index:10;  /* *zum fixieren rehcts oben */
+  right: 10px;
+  z-index: 10; /* bleibt fixiert */
 }
 
 .animated-logo {
-  font-size: 20rem;
+  font-size: 50%;
   opacity: 0;
   animation: slideInLogo 5s forwards;
 }
@@ -100,8 +102,8 @@ header h1{
     transform: translateX(-50px); /* Startposition */
   }
   100% {
-    opacity: 0.5;
-    transform: translateX(0); /* Endposition */
+    opacity: 1; /* Endposition angepasst */
+    transform: translateX(0);
   }
 }
 
@@ -111,16 +113,27 @@ header h1{
     transform: translateY(-50px); /* Startposition */
   }
   100% {
-    opacity: 1;
-    transform: translateY(0); /* Endposition */
+    opacity: 1; /* Endposition */
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBar {
+  0% {
+    opacity:0;
+    transform: translateZ(-50px);
+  }
+  100% {
+    opacity: 1; 
+    transform: translateZ(0);
   }
 }
 
 .button {
-  background-color: #006B8E; 
+  background-color: #006B8E;
   color: #E0E0E0;
   border-color: white;
-  border: 2px;
+  border-width: 2px;
   padding: 20px 30px;
   border-radius: 50px;
   cursor: pointer;
@@ -128,7 +141,7 @@ header h1{
 }
 
 .button:hover {
-  background-color: #004F67; 
+  background-color: #004F67;
 }
 
 .sbbutton:hover {
@@ -138,6 +151,6 @@ header h1{
 footer {
   background-color: #003D4D;
   text-align: center;
-  z-index:10;
-  color:black;
-} 
+  z-index: 10;
+  color: black;
+}

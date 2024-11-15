@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router,Route,Routes,Link } from "react-router-dom";
 import StaffPage from "./component/pages/StaffPage.js";
-import Footer from "./component/layout/footer/Footer.jsx";
+import Footer from "./component/layout/footer/Footer";
 import Sidebar from "./component/layout/sidebar/Sidebar.jsx";
 import HomePage from "./component/layout/content/HomePage.jsx";
 
@@ -12,32 +12,34 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <HomePage />
+        <HomePage/>
         <Sidebar />
         <Routes>
-          <Route path="/staffpage" Component={StaffPage}></Route>
+          <Route path="/staffpage" Component={StaffPage}>
+          </Route>
         </Routes>
         <Footer />
       </div>
     </Router>
+
+
+    // <Router>
+    //   {/* Hauptcontainer */}
+    //
+
+    //     {/* Sidebar */}
+
+    //     {/* ///definieren der Routen/// */}
+
+    //     <Routes>
+    //       <Route path="/staffpage" element={<StaffPage/>}></Route>
+    //     </Routes>
+
+    //   </div>
+
+    // </Router>
   );
 }
 
 ///// Export der App-Komponente /////
 export default App;
-
-// <Router>
-//   {/* Hauptcontainer */}
-//
-
-//     {/* Sidebar */}
-
-//     {/* ///definieren der Routen/// */}
-
-//     <Routes>
-//       <Route path="/staffpage" element={<StaffPage/>}></Route>
-//     </Routes>
-
-//   </div>
-
-// </Router>
