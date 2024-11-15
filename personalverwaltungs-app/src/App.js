@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router,Route,Routes,Link } from "react-router-dom";
+import StaffPage from "./component/pages/StaffPage.js";
+import Footer from "./component/layout/footer/Footer";
+import Sidebar from "./component/layout/sidebar/Sidebar.jsx";
+import HomePage from "./component/layout/content/HomePage.jsx";
 
+///// Hauptkomponente App /////
 function App() {
+  ///// Rendern der App ///
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <HomePage/>
+        <Sidebar />
+        <Routes>
+          <Route path="/staffpage" Component={StaffPage}>
+          </Route>
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+
+
+    // <Router>
+    //   {/* Hauptcontainer */}
+    //
+
+    //     {/* Sidebar */}
+
+    //     {/* ///definieren der Routen/// */}
+
+    //     <Routes>
+    //       <Route path="/staffpage" element={<StaffPage/>}></Route>
+    //     </Routes>
+
+    //   </div>
+
+    // </Router>
   );
 }
 
+///// Export der App-Komponente /////
 export default App;
