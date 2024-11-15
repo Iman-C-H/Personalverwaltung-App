@@ -47,7 +47,6 @@ function EmployeeList() {
                 <button onClick={() => setShowCalendar(true)}>Abwesenheitsplanung ansehen</button>
                 <button onClick={() => setShowDocuments(true)}>Dokumente verwalten</button>
                 <button onClick={() => { setSelectedEmployee(null); setShowCalendar(false); }}>Zurück zur Liste</button>
-
             </div>
         );
     };

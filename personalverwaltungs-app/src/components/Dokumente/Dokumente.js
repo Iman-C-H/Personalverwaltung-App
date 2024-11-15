@@ -24,7 +24,7 @@ function EmployeeDocuments({ employeeId, onClose }) {
             setDocuments(updatedDocuments);
             localStorage.setItem(`documents-${employeeId}`, JSON.stringify(updatedDocuments));
             setFile(null);
-            alert("Dokument hochgeladen!");
+            alert(`Dokument "${file.name}" erfolgreich hochgeladen!`);
         } else {
             alert("Bitte ein Dokument auswählen.");
         }
@@ -37,6 +37,14 @@ function EmployeeDocuments({ employeeId, onClose }) {
         link.click();
     };
 
+    const handleDeleteDocument = (index) => {
+        const documentToDelete = documents[index];
+        const updatedDocuments = documents.filter((_, i) => !i  === index);
+        setDocuments(updatedDocuments);
+        localStorage.setItem(`documents-${employeeId}`, JSON.stringify(updatedDocuments));
+        alert(`Dokument "${documentToDelete.name}" wurde gelöscht!`);
+    }
+
     return (
         <div style={{ padding: '20px' }}>
             <h2>Dokumente für Mitarbeiter {employeeId}</h2>
@@ -46,12 +54,17 @@ function EmployeeDocuments({ employeeId, onClose }) {
             </div>
             <h3>Hochgeladene Dokumente:</h3>
             <ul>
-                {documents.map((doc, index) => (
-                    <li key={index}>
-                        {doc.name} ({doc.type})
-                        <button onClick={() => handleDownload(doc.url)}>Herunterladen</button>
-                    </li>
-                ))}
+                {documents.length === 0 ? (
+                    <p>Es sind keine Dokumente vorhanden. Bitte laden Sie ein Dokument hoch.</p>
+                ) : (
+                    documents.map((doc, index) => (
+                        <li key={index}>
+                            {doc.name} ({doc.type})
+                            <button onClick={() => handleDownload(doc.url)}>Herunterladen</button>
+                            <button onClick={() => handleDeleteDocument(index)}>Dokument löschen</button>
+                        </li>
+                    ))
+                )}
             </ul>
             <button onClick={onClose}>Zurück zu Mitarbeiterdetails</button>
         </div>
