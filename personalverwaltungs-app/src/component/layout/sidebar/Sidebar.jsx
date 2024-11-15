@@ -1,8 +1,10 @@
 import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
+import "./Sidebar.module.css";
 
-function Sidebar({className}) {
+function SideBar() {
   return (
-    <aside className={`sidebar ${className}`}>
+
+    <aside className="sidebar">
       <ul>
         <li>
           <a href="HR" className="sbbuttonID">
@@ -12,7 +14,7 @@ function Sidebar({className}) {
         <br></br>
         <br></br>
         <li>
-          <Link to="/staffpage" className="sbbutton">
+          <Link to="/mitarbeiter" className="sbbutton">
             Mitarbeiter
           </Link>
         </li>
@@ -40,4 +42,4 @@ function Sidebar({className}) {
   );
 }
 
-export default Sidebar;
+export default SideBar;

@@ -1,5 +1,6 @@
 import { Router } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar";
+import SideBar from "../sidebar/Sidebar.jsx";
+import "./Homepage.module.css";
 
 function HomePage() {
   return (
@@ -14,7 +15,7 @@ function HomePage() {
         </div>
 
         <div>
-            <Sidebar className="animated-bar" />
+            <SideBar className="sidebar"/>
         </div>
 
     </div>
