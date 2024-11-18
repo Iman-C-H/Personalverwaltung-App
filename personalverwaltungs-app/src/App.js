@@ -26,9 +26,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-
   );
 }
-
 ///// Export der App-Komponente /////
 export default App;
