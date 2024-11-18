@@ -1,3 +1,12 @@
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
 /* Gesamtes Formular Styling */
 form {
     display: grid;
@@ -9,8 +18,7 @@ form {
     background-color: #006B8E;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-right: 240px;   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   
 }
 
 /* Input-Felder */
