@@ -26,7 +26,7 @@ function SideBar() {
         </li>
         <li>
           <Link to="/eventplan" className="sbbutton">
-            Urlaubs/<br></br>Abwesenheitsplan
+            Eventplan
           </Link>
         </li>
         <li>
@@ -38,8 +38,7 @@ function SideBar() {
 
       <div className="main-content-flex">
         <Link to="/mitarbeiter" className="button-link">
-        <button className="button">+</button></Link> 
-        <h2>Mitarbeiter hinzufügen</h2>
+        <button className="button">+ Mitarbieter hinzufügen</button></Link> 
       </div>
     </aside>
   );
