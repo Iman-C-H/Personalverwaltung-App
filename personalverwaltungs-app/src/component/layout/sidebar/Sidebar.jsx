@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
 import "./Sidebar.module.css";
 
+
 function SideBar() {
   return (
 
@@ -14,19 +15,19 @@ function SideBar() {
         <br></br>
         <br></br>
         <li>
-          <Link to="/mitarbeiter" className="sbbutton">
+          <Link to="/mitarbeiterliste" className="sbbutton">
             Mitarbeiter
           </Link>
         </li>
         <li>
-          <a href="#2" className="sbbutton">
+          <Link to="/dokumente" className="sbbutton">
             Dokumente
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#3" className="sbbutton">
+          <Link to="/eventplan" className="sbbutton">
             Urlaubs/<br></br>Abwesenheitsplan
-          </a>
+          </Link>
         </li>
         <li>
           <a href="#4" className="sbbutton">
