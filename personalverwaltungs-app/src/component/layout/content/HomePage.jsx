@@ -14,6 +14,8 @@ function HomePage() {
           <img src="/Logosecond.png" alt="StaffBase" className="logo" />
         </div>
 
+     <img src="Bild.svg" alt="bild" class="HPImage" />
+   
         <div>
             <SideBar/>
         </div>
