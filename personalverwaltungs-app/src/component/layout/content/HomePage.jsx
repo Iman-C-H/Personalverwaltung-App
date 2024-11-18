@@ -15,7 +15,7 @@ function HomePage() {
         </div>
 
         <div>
-            <SideBar className="sidebar"/>
+            <SideBar/>
         </div>
 
     </div>

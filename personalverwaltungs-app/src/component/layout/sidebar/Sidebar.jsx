@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
 import "./Sidebar.module.css";
 
-function SideBargit ü() {
+function SideBar() {
   return (
 
     <aside className="sidebar">
