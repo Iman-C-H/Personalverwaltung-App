@@ -135,7 +135,7 @@ header h1 {
     transform: translateZ(-50px);
   }
   100% {
-    opacity: 1; 
+    opacity: 1;
     transform: translateZ(0);
   }
 }
