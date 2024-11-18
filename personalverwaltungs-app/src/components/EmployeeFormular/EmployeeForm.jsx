@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createEmployee } from "./EmployeeObject";
+import "./EmployeeForm.module.css";
 
 
 function EmployeeForm() {
