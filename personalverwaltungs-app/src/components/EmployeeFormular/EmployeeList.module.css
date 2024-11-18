@@ -1,0 +1,112 @@
+
+/* Container für die gesamte Mitarbeiterliste */
+.employee-list {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Styling für die Mitarbeiterüberschrift */
+  h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  /* Liste der Mitarbeiter */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .employee-list li {
+    color: black;
+    background-color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    max-width: 500px;
+  }
+  
+  .employee-list li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+  }
+  
+  /* Styling für die Detailsansicht eines Mitarbeiters */
+  .employee-detail-container {
+    background-color:rgba(77, 209, 209, 0.452);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .employee-detail-container h3 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  /* Detailtext für jedes Feld */
+  .employee-detail-container p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: white;
+  }
+  
+  .employee-detail-container button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #006b8e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .employee-detail-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Kalender und Dokumente Bereich */
+  .abwesenheitskalender, .documents {
+    margin-top: 20px;
+  }
+  
+  button {
+    font-size: 1rem;
+  }
+  
+  /* Styling für die Buttons im Detailbereich */
+  .employee-details .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .buttons-container button {
+    width: 150px;
+    background-color: #28a745;
+  }
+  
+  .buttons-container button:last-child {
+    background-color: #dc3545;
+  }
+  
+  .buttons-container button:hover {
+    background-color: #218838;
+  }
+  
+  /* Optional: Styling für den "Zurück"-Button in der Detailansicht */
+  .employee-details button.back-button {
+    background-color: #6c757d;
+  }
+  
+  .employee-details button.back-button:hover {
+    background-color: #5a6268;
+  }
+  
+  

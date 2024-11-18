@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import EditEmployeeDetail from './EditEmployeeDetail';
 import Abwesenheitskalender from '../Abwesenheitsplan/Abwesenheitsplan';
 import EmployeeDocuments from '../Dokumente/Dokumente';
+import "./EmployeeList.module.css";
+import styles from "./EmployeeList.module.css";
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
@@ -93,7 +95,7 @@ function EmployeeList() {
         <div>
             <h2>Mitarbeiterliste</h2>
             {!selectedEmployee ? (
-            <ul>
+            <ul className={styles['employee-list']}>
                 {employees.map(employee => (
                     <li key={employee.id} onClick={() => handleEmployeeClick(employee)}>
                         {employee.firstName} {employee.lastName} - {employee.department}
@@ -101,7 +103,7 @@ function EmployeeList() {
                 ))}
             </ul>
          ) : (
-            <div className='employee-details'>
+            <div className={styles['employee-detail-container']}>
                 {!isEditing ? (
                 <div>
                     {renderEmployeeDetails(selectedEmployee)}
