@@ -36,7 +36,9 @@ function SideBar() {
       </ul>
 
       <div className="main-content-flex">
-        <button className="button">+</button> <h2>Mitarbeiter hinzufügen</h2>
+        <Link to="/mitarbeiter" className="button-link">
+        <button className="button">+</button></Link> 
+        <h2>Mitarbeiter hinzufügen</h2>
       </div>
     </aside>
   );
