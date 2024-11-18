@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
-import "./Sidebar.module.css";
+import "./Sidebar.css";
 
 
 function SideBar() {
@@ -26,7 +26,7 @@ function SideBar() {
         </li>
         <li>
           <Link to="/eventplan" className="sbbutton">
-            Urlaubs/<br></br>Abwesenheitsplan
+            Eventplan
           </Link>
         </li>
         <li>
@@ -38,7 +38,7 @@ function SideBar() {
 
       <div className="main-content-flex">
         <Link to="/mitarbeiter" className="button-link">
-        <button className="button">+ Mitarbeiter hinzufügen</button></Link>
+        <button className="button">+ Mitarbieter hinzufügen</button></Link> 
       </div>
     </aside>
   );
