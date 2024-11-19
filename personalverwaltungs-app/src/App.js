@@ -18,8 +18,7 @@ function App() {
       <div className="container">
         <HomePage/>
         <SideBar />
-        <Routes>
-          <Route path="/" Component={HomePage} />
+        <Routes>   
           <Route path="/mitarbeiterliste" Component={EmployeeList}></Route>
           <Route path="/mitarbeiter/:id" Component={EmployeeList} />
           <Route path="/abwesenheitskalender/:employeeId" Component={Abwesenheitskalender} />
