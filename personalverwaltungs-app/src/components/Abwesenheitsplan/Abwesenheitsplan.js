@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import "./Abwesenheitsplan.css";
 
 
 const localizer = momentLocalizer(moment);
@@ -93,7 +94,9 @@ function Abwesenheitskalender({employee}) {
 
 
     return (
-        <div style={{
+        <div 
+        className="abwesenheitskalender-container"
+        style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -102,6 +105,7 @@ function Abwesenheitskalender({employee}) {
           }}
           >
            <div
+           className="abwesenheitskkalender-wrapper"
         style={{
           width: '80%',  // 80% der Bildschirmbreite
           maxWidth: '1200px',
@@ -111,20 +115,23 @@ function Abwesenheitskalender({employee}) {
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',  // Schatten um den Kalender
         }}
        >
-            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Abwesenheitsplan für {employee.firstName} {employee.lastName}</h2>
-            <div>
-                    <input type="text" placeholder="Titel (z.B. Urlaub)" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>
-                    <input type="date" value={newEvent.start} onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })} />
-                    <input type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
-                    <input type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
-                    <input type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
-                    <button onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Abwesenheit hinzufügen"}</button>
+            <h2 className="abwesenheitskalender-header" style={{ textAlign: 'center', marginBottom: '20px' }}>Abwesenheitsplan für {employee.firstName} {employee.lastName}</h2>
+            <div className="abwesenheitskalender-form">
+                    <input  className="abwesenheitskalender-input" type="text" placeholder="Titel (z.B. Urlaub)" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>
+                    <label htmlFor="start-time" className="abwesenheitskalender-label">Von: </label>
+                    <input className="abwesenheitskalender-input" type="date" value={newEvent.start} onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })} />
+                    <input className="abwesenheitskalender-input" type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
+                    <label htmlFor="start-time" className="abwesenheitskalender-label">Bis: </label>
+                    <input className="abwesenheitskalender-input" type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
+                    <input className="abwesenheitskalender-input"type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
+                    <button className="abwesenheitskalender-button" onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Abwesenheit hinzufügen"}</button>
                     {selectedEvent && (
-                        <button onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Abwesenheit löschen</button>
+                        <button className="abwesenheitskalender-button delete-button" onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Abwesenheit löschen</button>
                     )}
                 </div>
 
             <Calendar
+            className="abwesenheitskalender-calendar"
             localizer={localizer}
             events={events}
             startAccessor="start"

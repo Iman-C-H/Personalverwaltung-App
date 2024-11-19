@@ -23,9 +23,12 @@ function EmployeeList() {
         setSelectedEmployee(employee);
         setIsEditing(false);
         setShowCalendar(false);
+        setShowCalendar(false);
+        setShowDocuments(false);
     };
 
     const renderEmployeeDetails = (employee) => {
+        if (showCalendar || showDocuments) return null;
         return (
             <div>
                 <h3>Details für {employee.firstName} {employee.lastName}</h3>

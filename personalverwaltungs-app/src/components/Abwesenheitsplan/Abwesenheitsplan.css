@@ -1,0 +1,194 @@
+/* Container für den gesamten Abwesenheitskalender */
+.abwesenheitskalender-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Bildschirmhöhe */
+    background-color: #f4f4f9;
+    overflow: hidden;
+    width: 60vh;
+  }
+  
+  /* Wrapper für den Kalender und das Formular */
+  .abwesenheitskalender-wrapper {
+    width: 80%;  /* 80% der Bildschirmbreite */
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 80vh;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Styling der Header-Überschrift */
+  .abwesenheitskalender-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: black;
+  }
+  
+  /* Styling für die Formulareingaben */
+  .abwesenheitskalender-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  /* Styling für die Labels */
+  .abwesenheitskalender-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  /* Styling der Eingabefelder */
+  .abwesenheitskalender-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .abwesenheitskalender-input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  /* Styling für die Buttons */
+  .abwesenheitskalender-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .abwesenheitskalender-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling für den Löschen-Button */
+  .abwesenheitskalender-button.delete-button {
+    background-color: #dc3545;
+  }
+  
+  .abwesenheitskalender-button.delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Styling für den Kalender */
+  .rbc-calendar {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Anpassungen für den Kalender Header */
+  .rbc-header {
+    background-color: #f4f4f9;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #ddd;
+  }
+  
+  .rbc-header.rbc-off-range {
+    background-color: #e9ecef;
+  }
+  
+  /* Styling für die Tage und Zellen */
+  .rbc-day {
+    font-size: 1rem;
+  }
+  
+  .rbc-day-number {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .rbc-day:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  /* Styling für das ausgewählte Event */
+  .rbc-event {
+    background-color:#dc3545;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .rbc-event:hover {
+    background-color: #0056b3;
+  }
+
+  /* Styling für die Kalender-Toolbar */
+.rbc-toolbar {
+  display: flex;
+  justify-content: space-between; /* Verteile die Buttons gleichmäßig */
+  align-items: center;  /* Zentriert die Buttons vertikal */
+  flex-wrap: nowrap;  /* Verhindert das Umbrüche von Buttons */
+  margin-bottom: 10px;  /* Abstände nach unten */
+}
+
+/* Spezifische Styling für die einzelnen Buttons in der Toolbar */
+.rbc-toolbar button {
+  margin: 0 5px; /* Abstand zwischen den Buttons */
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #0056b3; /* Hover-Effekt */
+}
+
+.rbc-toolbar .rbc-btn-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+  
+  /* Styling für das Formular und die Eingabefelder */
+  .abwesenheitskalender-form input[type="date"],
+  .abwesenheitskalender-form input[type="time"] {
+    width: 48%; /* Zwei Eingabefelder nebeneinander */
+    margin-right: 4%;
+  }
+  
+  .abwesenheitskalender-form input[type="date"]:last-of-type,
+  .abwesenheitskalender-form input[type="time"]:last-of-type {
+    margin-right: 0;
+  }
+  
+  /* Zusätzliche Stile für mobile Ansicht */
+  @media (max-width: 768px) {
+    .abwesenheitskalender-wrapper {
+      width: 95%;
+    }
+  
+    .abwesenheitskalender-form input[type="date"],
+    .abwesenheitskalender-form input[type="time"] {
+      width: 100%; /* Eingabefelder auf mobilen Geräten die volle Breite nutzen */
+      margin-right: 0;
+    }
+  }
+  
+  
+  
