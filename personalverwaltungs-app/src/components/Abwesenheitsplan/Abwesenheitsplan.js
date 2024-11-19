@@ -100,7 +100,7 @@ function Abwesenheitskalender({employee, onClose}) {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',  // Bildschirmhöhe
+            height: '90vh',  
             backgroundColor: '#f4f4f9',
           }}
           >

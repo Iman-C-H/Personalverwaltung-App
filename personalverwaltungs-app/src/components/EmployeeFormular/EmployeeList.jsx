@@ -97,7 +97,7 @@ function EmployeeList() {
 
     return (
         <div>
-            <h2>Mitarbeiterliste</h2>
+            {!showCalendar &&<h2>Mitarbeiterliste</h2>}
             {!selectedEmployee ? (
             <ul className={styles['employee-list']}>
                 {employees.map(employee => (
