@@ -8,7 +8,7 @@ import "./Abwesenheitsplan.css";
 const localizer = momentLocalizer(moment);
 
 
-function Abwesenheitskalender({employee}) {
+function Abwesenheitskalender({employee, onClose}) {
     const [events, setEvents] = useState([]);
     const [newEvent, setNewEvent] = useState({ title: '', start: '', end: '' });
     const [editingEvent, setEditingEvent] = useState(null);
@@ -115,6 +115,7 @@ function Abwesenheitskalender({employee}) {
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',  // Schatten um den Kalender
         }}
        >
+            <button className="zuruck-button" onClick={onClose} style={{ marginBottom: '20px' }}>Zurück zu Mitarbeiterdetails</button>
             <h2 className="abwesenheitskalender-header" style={{ textAlign: 'center', marginBottom: '20px' }}>Abwesenheitsplan für {employee.firstName} {employee.lastName}</h2>
             <div className="abwesenheitskalender-form">
                     <input  className="abwesenheitskalender-input" type="text" placeholder="Titel (z.B. Urlaub)" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>

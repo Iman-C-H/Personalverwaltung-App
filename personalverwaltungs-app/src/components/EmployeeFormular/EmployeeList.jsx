@@ -5,6 +5,7 @@ import EmployeeDocuments from '../Dokumente/Dokumente';
 import "./EmployeeList.module.css";
 import styles from "./EmployeeList.module.css";
 
+
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -112,8 +113,10 @@ function EmployeeList() {
                     {renderEmployeeDetails(selectedEmployee)}
                     {showCalendar === true && (
                         <>
-                            <Abwesenheitskalender employee={selectedEmployee} />
-                            <button onClick={() => setShowCalendar(false)}>Zurück zu Mitarbeiterdetails</button>
+                            <Abwesenheitskalender 
+                            employee={selectedEmployee} 
+                            onClose={() => setShowCalendar(false)} />
+                            
                         </>
                     )}
 

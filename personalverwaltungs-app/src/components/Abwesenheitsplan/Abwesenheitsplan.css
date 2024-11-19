@@ -3,21 +3,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  
+    height: 60vh;  
     background-color: #f4f4f9;
     overflow: hidden;
     width: 60vh;
+    padding-bottom: 130px;
+    position: relative;
+    margin: 0;
+    padding: 0;
   }
   
   /* Wrapper für den Kalender und das Formular */
   .abwesenheitskalender-wrapper {
-    width: 80%;  
-    max-width: 1200px;
-    padding: 20px;
+    width: 100%;  
+    max-width: 1000px;
+    padding: 10px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 80vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60vh;
     margin: 0 auto;
     position: relative;
   }
@@ -91,7 +95,8 @@
   /* Styling für den Kalender */
   .rbc-calendar {
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
   }
   
   /* Anpassungen für den Kalender Header */
@@ -104,6 +109,11 @@
   
   .rbc-header.rbc-off-range {
     background-color: #e9ecef;
+  }
+
+  /* Kalender Größe */
+  .rbc-calendar .rbc-time-view {
+    height: 400px;  /* Reduziert die Höhe des Kalenders */
   }
   
   /* Styling für die Tage und Zellen */
