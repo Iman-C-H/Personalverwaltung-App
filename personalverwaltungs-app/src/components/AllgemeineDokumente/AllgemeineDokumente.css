@@ -1,0 +1,101 @@
+.document-container {
+    background-color: #006B8E;
+    color: #E0E0E0;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.document-container h2 {
+    color: #E0E0E0;
+    border-bottom: 2px solid #003D4D;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.file-upload {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.file-upload input[type="file"] {
+    flex-grow: 1;
+    background-color: #003D4D;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.file-upload button {
+    background-color: #003D4D;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload button:hover {
+    background-color: #004F67;
+}
+
+.document-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.document-container ul li {
+    background-color: #003D4D;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.document-container ul li button {
+    background-color: #006B8E;
+    color: #E0E0E0;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.document-container ul li button:hover {
+    background-color: #004F67;
+}
+
+.empty-state {
+    text-align: center;
+    color: #E0E0E0;
+    padding: 20px;
+    background-color: #003D4D;
+    border-radius: 5px;
+}
+
+.back-button {
+    width: 100%;
+    background-color: #003D4D;
+    color: #E0E0E0;
+    border: none;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #004F67;
+}

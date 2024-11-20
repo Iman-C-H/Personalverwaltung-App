@@ -11,7 +11,6 @@ import Eventplan from "./components/Eventplan/Eventplan.js";
 import Abwesenheitskalender from "./components/Abwesenheitsplan/Abwesenheitsplan.js";
 import AllgemeineDokumente from "./components/AllgemeineDokumente/AllgemeineDokumente.js";
 
-
 ///// Hauptkomponente App /////
 function App() {
   ///// Rendern der App ///
