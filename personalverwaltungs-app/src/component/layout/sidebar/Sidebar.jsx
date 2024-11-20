@@ -6,7 +6,10 @@ function SideBar() {
   return (
 
     <aside className="sidebar">
-      <ul>
+      <ul>  
+      <div className="logo-container, animated-logo">
+          <img src="/Logosecond.png" alt="StaffBase" className="logo" />
+        </div>
         <li>
           <a href="HR" className="sbbuttonID">
             Techstarter HR
