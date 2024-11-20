@@ -6,10 +6,7 @@ function HomePage() {
 
   return (
 
-      <div>        
-        <div className="logo-container, animated-logo">
-          <img src="/Logosecond.png" alt="StaffBase" className="logo" />
-        </div>
+      <div>
 
 
         <header className="animated-title">

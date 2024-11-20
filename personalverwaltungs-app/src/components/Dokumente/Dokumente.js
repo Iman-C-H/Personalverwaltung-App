@@ -85,7 +85,7 @@ function EmployeeDocuments({ employeeId, onClose }) {
         )}
       </ul>
       <Link to="/HR" className="back-button" onClick={onClose}>
-        Zurück zu Startseite
+        Zurück zur Startseite
       </Link>
     </div>
   );
