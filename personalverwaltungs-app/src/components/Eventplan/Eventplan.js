@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import "./Eventplan.css";
 
 const localizer = momentLocalizer(moment);
 
@@ -88,34 +89,29 @@ function Eventplan() {
 
 
     return (
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',  // Bildschirmhöhe
-            backgroundColor: '#f4f4f9',
-          }}
-          >
-           <div
+        <div className="eventplan-container">
+           <div className="eventplan-wrapper"
         style={{
           width: '80%',  // 80% der Bildschirmbreite
           maxWidth: '1200px',
-          padding: '20px',
-          borderRadius: '8px',
-          backgroundColor: 'white',
+          padding: '10px',
+          borderRadius: '20px',
+          backgroundColor: '#f4f4f9',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',  // Schatten um den Kalender
         }}
        >
-            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Unsere Events</h2>
-            <div>
-                    <input type="text" placeholder="Titel" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>
-                    <input type="date" value={newEvent.start} onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })} />
-                    <input type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
-                    <input type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
-                    <input type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
-                    <button onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Event hinzufügen"}</button>
+            <h2 className="eventplan-header" style={{ textAlign: 'center', marginBottom: '20px' }}>Unsere Events</h2>
+            <div className="eventplan-form">
+                    <input className="eventplan-input" type="text" placeholder="Titel" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>
+                    <label htmlFor="start-time" className="eventplan-label">Von: </label>
+                    <input className="eventplan-input" type="date" value={newEvent.start} onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })} />
+                    <input className="eventplan-input" type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
+                    <label htmlFor="start-time" className="eventplan-label">Bis: </label>
+                    <input className="eventplan-input" type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
+                    <input className="eventplan-input" type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
+                    <button className="eventplan-button" onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Event hinzufügen"}</button>
                     {selectedEvent && (
-                        <button onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Event löschen</button>
+                        <button className="eventplan-button-delete" onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Event löschen</button>
                     )}
                 </div>
 

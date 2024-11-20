@@ -12,7 +12,8 @@ function HomePage() {
     console.log(location.pathname);
     if (
       location.pathname.startsWith("/mitarbeiterliste") ||
-      location.pathname.startsWith("/dokumente")
+      location.pathname.startsWith("/dokumente") ||
+      location.pathname.startsWith("/eventplan")
     ) {
       setShowWelcome(false);  
     } else {

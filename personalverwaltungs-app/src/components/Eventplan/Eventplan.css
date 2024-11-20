@@ -1,0 +1,158 @@
+.eventplan-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow-x: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.eventplan-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: x-large;
+    color: black;
+    margin-right: 10%;
+}
+
+@media (max-width: 1200px) {
+    .eventplan-header {
+        font-size: large;
+        margin-right: 5%;
+    }
+}
+
+.eventplan-form {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.eventplan-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.eventplan-input {
+    font-size: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .eventplan-input {
+        font-size: 0.65rem;
+    }
+}
+
+.eventplan-input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.eventplan-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color:rgb(18, 153, 153);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .eventplan-button {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+}
+
+.eventplan-button:hover {
+    background-color: #0056b3;
+}
+
+.eventplan-button-delete {
+    background-color: #dc3545;
+}
+
+.eventplan-button-delete:hover {
+    background-color: #c82333;
+}
+
+.rbc-calendar {
+    width: 100%; /* Passt sich an die Breite des Containers an */
+    max-width: 100%; /* Überlauf verhindern */
+    overflow-y: auto; /* Keine Elemente außerhalb anzeigen */
+    box-sizing: border-box;  
+    height: 100%;
+}
+
+.rbc-day-bg {
+    min-width: 0;
+    flex-grow: 1; /* Breite an den verfügbaren Platz anpassen */
+}
+
+.rbc-row {
+    display: flex;
+    flex-wrap: wrap; /* Bei kleinen Bildschirmen umbrechen */
+    width: 100%; /* Voll ausfüllen */
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 992px) {
+    .eventplan-container {
+        padding: 5px; /* Weniger Padding bei kleinen Bildschirmen */
+    }
+
+    .rbc-calendar {
+        font-size: 0.9rem; /* Schriftgröße im Kalender verkleinern */
+    }
+}
+
+@media (max-width: 768px) {
+    .rbc-calendar {
+        font-size: 0.8rem;
+    }
+
+    .rbc-day-bg {
+        flex-basis: calc(100% / 7); /* Tageszellen brechen sauber um */
+    }
+}
+
+@media (max-width: 576px) {
+    .rbc-calendar {
+        font-size: 0.75rem; /* Noch kleiner */
+    }
+}
+
+.rbc-day-number {
+    color: black;
+    font-weight: bold;
+}
+
+.rbc-event {
+    background-color:#dc3545;
+    border-radius: 5px;
+}
+
+@media (max-width: 992px) {
+    .rbc-day-number {
+        font-size: 0.85rem;
+    }
+
+    .rbc-event {
+        font-size: 0.75rem;
+        padding: 3px; /* kleinere Events für kleine Bildschirme */
+    }
+}
+
