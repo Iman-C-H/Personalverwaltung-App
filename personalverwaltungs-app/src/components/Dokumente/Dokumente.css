@@ -83,7 +83,7 @@
     border-radius: 5px;
 }
 
-.back-button {
+.document-container.zuruck-button-dokumente {
     width: 100%;
     background-color: #003D4D;
     color: #E0E0E0;
@@ -96,6 +96,6 @@
     transition: background-color 0.3s ease;
 }
 
-.back-button:hover {
+.document-container.zuruck-button-dokumente:hover {
     background-color: #004F67;
 }

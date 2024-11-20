@@ -84,9 +84,7 @@ function EmployeeDocuments({ employeeId, onClose }) {
           ))
         )}
       </ul>
-      <Link to="/HR" className="back-button" onClick={onClose}>
-        Zurück zur Startseite
-      </Link>
+      <button className="zuruck-button-dokumente" onClick={onClose} style={{ backgroundColor: '#003D4D'}}>Zurück zu Mitarbeiterdetails</button>
     </div>
   );
 }
