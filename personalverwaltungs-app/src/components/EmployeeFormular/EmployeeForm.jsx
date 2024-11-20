@@ -41,6 +41,7 @@ function EmployeeForm() {
 
     return (
         <div className="form-container">
+            <h2>Mitarbeiter hinzufügen</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="firstName" value={formData.firstName || ''} onChange={handleChange} placeholder="Vorname" />
                 <input type="text" name="lastName" value={formData.lastName || ''} onChange={handleChange} placeholder="Nachname" />

@@ -9,6 +9,8 @@ import EmployeeList from "./components/EmployeeFormular/EmployeeList.jsx";
 import Dokumente from "./components/Dokumente/Dokumente.js";
 import Eventplan from "./components/Eventplan/Eventplan.js";
 import Abwesenheitskalender from "./components/Abwesenheitsplan/Abwesenheitsplan.js";
+import AllgemeineDokumente from "./components/AllgemeineDokumente/AllgemeineDokumente.js";
+
 
 ///// Hauptkomponente App /////
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route path="/mitarbeiter" Component={EmployeeForm}></Route>
           <Route path="/dokumente" Component={Dokumente}></Route>
           <Route path="/eventplan" Component={Eventplan}></Route>
+          <Route path="/allgemeinedokumente" Component={AllgemeineDokumente}></Route>
         </Routes>
         <Footer />
       </div>

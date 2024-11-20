@@ -23,7 +23,7 @@ function SideBar() {
           </Link>
         </li>
         <li>
-          <Link to="/dokumente" className="sbbutton">
+          <Link to="/allgemeinedokumente" className="sbbutton">
             Dokumente
           </Link>
         </li>
