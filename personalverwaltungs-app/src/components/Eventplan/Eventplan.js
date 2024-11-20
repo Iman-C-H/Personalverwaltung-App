@@ -120,7 +120,7 @@ function Eventplan() {
             events={events}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 500}}
+            style={{ height: 400}}
             selectable
             onDoubleClickEvent={handleEditEvent}
             onSelectEvent={(event) => setSelectedEvent(event)}

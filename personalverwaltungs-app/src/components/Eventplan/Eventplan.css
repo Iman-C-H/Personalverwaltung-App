@@ -14,7 +14,7 @@
 .eventplan-header {
     text-align: center;
     margin-bottom: 20px;
-    font-size: x-large;
+    font-size: xx-large;
     color: black;
     margin-right: 10%;
 }
@@ -40,11 +40,12 @@
 }
 
 .eventplan-input {
-    font-size: 0.75rem;
+    font-size: 1.25rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
 }
+
 
 @media (max-width: 768px) {
     .eventplan-input {
@@ -58,7 +59,7 @@
 }
 
 .eventplan-button {
-    padding: 10px 20px;
+    padding: 8px 15px;
     font-size: 1rem;
     color: white;
     background-color:rgb(18, 153, 153);
@@ -94,7 +95,6 @@
     max-width: 100%; /* Überlauf verhindern */
     overflow-y: auto; /* Keine Elemente außerhalb anzeigen */
     box-sizing: border-box;  
-    height: 100%;
 }
 
 .rbc-day-bg {
@@ -106,6 +106,18 @@
     display: flex;
     flex-wrap: wrap; /* Bei kleinen Bildschirmen umbrechen */
     width: 100%; /* Voll ausfüllen */
+}
+
+.rbc-toolbar button {
+    background-color: darkcyan;
+}
+
+.rbc-toolbar-label {
+    color: black;
+}
+
+.rbc-button-link {
+    color: black;
 }
 
 /* Responsive Anpassungen */
