@@ -13,7 +13,9 @@ function HomePage() {
     if (
       location.pathname.startsWith("/mitarbeiterliste") ||
       location.pathname.startsWith("/dokumente") ||
-      location.pathname.startsWith("/eventplan")
+      location.pathname.startsWith("/allgemeinedokumente") ||
+      location.pathname.startsWith("/eventplan") ||
+      location.pathname.startsWith("/mitarbeiter")
     ) {
       setShowWelcome(false);  
     } else {

@@ -1,7 +1,6 @@
 import {BrowserRouter as Router, Link} from "react-router-dom"; /* Route, Routes,*/
 import "./Sidebar.css";
 
-
 function SideBar() {
   return (
 
@@ -23,7 +22,7 @@ function SideBar() {
           </Link>
         </li>
         <li>
-          <Link to="/dokumente" className="sbbutton">
+          <Link to="/allgemeinedokumente" className="sbbutton">
             Dokumente
           </Link>
         </li>
