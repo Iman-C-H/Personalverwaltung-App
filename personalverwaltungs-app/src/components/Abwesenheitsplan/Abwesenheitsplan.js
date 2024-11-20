@@ -118,17 +118,54 @@ function Abwesenheitskalender({employee, onClose}) {
             <button className="zuruck-button" onClick={onClose} style={{ marginBottom: '20px' }}>Zurück zu Mitarbeiterdetails</button>
             <h2 className="abwesenheitskalender-header" style={{ textAlign: 'center', marginBottom: '20px' }}>Abwesenheitsplan für {employee.firstName} {employee.lastName}</h2>
             <div className="abwesenheitskalender-form">
-                    <input  className="abwesenheitskalender-input" type="text" placeholder="Titel (z.B. Urlaub)" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}/>
-                    <label htmlFor="start-time" className="abwesenheitskalender-label">Von: </label>
-                    <input className="abwesenheitskalender-input" type="date" value={newEvent.start} onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })} />
-                    <input className="abwesenheitskalender-input" type="time" value={newEvent.startTime} onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })} />
-                    <label htmlFor="start-time" className="abwesenheitskalender-label">Bis: </label>
-                    <input className="abwesenheitskalender-input" type="date" value={newEvent.end} onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })} />
-                    <input className="abwesenheitskalender-input"type="time" value={newEvent.endTime} onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })} />
-                    <button className="abwesenheitskalender-button" onClick={handleSaveEvent}>{editingEvent ? "Änderungen speichern": "Abwesenheit hinzufügen"}</button>
-                    {selectedEvent && (
-                        <button className="abwesenheitskalender-button delete-button" onClick={() => handleDeleteSelectedEvent(selectedEvent)}>Abwesenheit löschen</button>
-                    )}
+            <input
+                className="abwesenheitskalender-input"
+                type="text"
+                placeholder="Titel (z.B. Urlaub)"
+                value={newEvent.title}
+                onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+            />
+
+            <div className="form-group">
+            <label htmlFor="start-date" className="abwesenheitskalender-label">Von: </label>
+            <input
+                className="abwesenheitskalender-input"
+                type="date"
+                value={newEvent.start}
+                onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })}
+            />
+            <input
+                className="abwesenheitskalender-input"
+                type="time"
+                value={newEvent.startTime}
+                onChange={(e) => setNewEvent({ ...newEvent, startTime: e.target.value })}
+            />
+            </div>
+
+            <div className="form-group">
+            <label htmlFor="end-date" className="abwesenheitskalender-label">Bis: </label>
+            <input
+                className="abwesenheitskalender-input"
+                type="date"
+                value={newEvent.end}
+                onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })}
+            />
+            <input
+                className="abwesenheitskalender-input"
+                type="time"
+                value={newEvent.endTime}
+                onChange={(e) => setNewEvent({ ...newEvent, endTime: e.target.value })}
+            />
+            </div>
+
+    <button className="abwesenheitskalender-button" onClick={handleSaveEvent}>
+        {editingEvent ? "Änderungen speichern" : "Abwesenheit hinzufügen"}
+    </button>
+    {selectedEvent && (
+        <button className="abwesenheitskalender-button delete-button" onClick={() => handleDeleteSelectedEvent(selectedEvent)}>
+            Abwesenheit löschen
+        </button>
+    )}
                 </div>
 
             <Calendar

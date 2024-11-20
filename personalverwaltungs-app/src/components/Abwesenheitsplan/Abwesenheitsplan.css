@@ -6,10 +6,10 @@
     height: 100vh;  
     background-color: #f4f4f9;
     overflow: hidden;
-    width: 60vh;
+    width: 100%;
     padding-bottom: 130px;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
@@ -17,7 +17,7 @@
   .abwesenheitskalender-wrapper {
     width: 100%;  
     max-width: 1000px;
-    padding: 10px;
+    padding: 1px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -37,18 +37,51 @@
   /* Styling für die Formulareingaben */
   .abwesenheitskalender-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 20px;
-    height: 50%;
+    height: auto;
+  }
+
+  /* Styling für jedes Eingabefeld und Label */
+  .abwesenheitskalender-form .form-group {
+    display: flex;
+    align-items: center;
+    width: 48%;  /* Jede Gruppe von Label + Input bekommt 48% der Breite */
+  }
+
+  .abwesenheitskalender-form .form-group label {
+    width: 30%; /* Labels nehmen 30% der Breite */
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 10px; /* Abstand zwischen Label und Eingabefeld */
+    color: black;
+  }
+
+  .abwesenheitskalender-form .form-group input {
+    width: 70%;  /* Eingabefelder nehmen den Rest (70%) der Breite */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .abwesenheitskalender-form .form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
   }
 
   /* Styling für die Labels */
   .abwesenheitskalender-label {
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     color: black;
+    width: 30%;
+    display: flex;
+    align-items: center;
   }
   
   /* Styling der Eingabefelder */
@@ -57,7 +90,7 @@
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%;
+    width: 65%;
     box-sizing: border-box;
   }
   
