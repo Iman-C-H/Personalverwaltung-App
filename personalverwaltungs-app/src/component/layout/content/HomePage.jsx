@@ -24,18 +24,20 @@ function HomePage() {
   return (
 
       <div>
-        {showWelcome && (        
-        <div className="logo-container, animated-logo">
-          <img src="/Logosecond.png" alt="StaffBase" className="logo" />
-        </div>
-        )}
-
-        {showWelcome && (
+        
+         {showWelcome && (
         <header className="animated-title">
-          <h1>Willkommen!</h1>
+          <h1 style={{ fontSize: '100px' }}>Willkommen!</h1>
+
         </header>
         )}
 
+
+        {showWelcome && (        
+        <div className="logo-container, animated-logo" style={{ width:'100%', height:'500px'}}>
+          <img src="/HRteam.png" alt="StaffBase" className="logo" style={{width:'100rem', height:'14rem',transform: 'scale(1.75)'}}/>
+        </div>
+        )}
 
 
         
