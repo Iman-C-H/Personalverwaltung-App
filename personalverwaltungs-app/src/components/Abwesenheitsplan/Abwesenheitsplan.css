@@ -1,47 +1,45 @@
+
 /* Container für den gesamten Abwesenheitskalender */
 .abwesenheitskalender-container {
-    display: flex;
+    display:inline-flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  
-    background-color: #f4f4f9;
+    height: 80vh;  
+    background-color: #f1f5fae5;
     overflow: hidden;
     width: 100%;
-    padding-bottom: 130px;
-    margin: 0;
-    padding: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+    border-radius: 10px;
+}
   
   /* Wrapper für den Kalender und das Formular */
   .abwesenheitskalender-wrapper {
     width: 100%;  
-    max-width: 1000px;
-    padding: 1px;
+    max-width: 1200px;
+    padding: 20px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 60vh;
-    margin: 0 auto;
     position: relative;
+    background-color: #f4f4f9;
   }
   
   /* Styling der Header-Überschrift */
   .abwesenheitskalender-header {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 2rem;
     color: black;
+    margin-top:10px;
+    margin-right: 10%;
   }
   
   /* Styling für die Formulareingaben */
   .abwesenheitskalender-form {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-    height: auto;
+    gap: 40px;
+    margin-bottom: 30px;
   }
 
   /* Styling für jedes Eingabefeld und Label */
@@ -104,12 +102,12 @@
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
-    background-color: #007BFF;
+    background-color: darkcyan;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
+    height: 40%;
     width: 100%;
   }
   
@@ -130,7 +128,7 @@
   .rbc-calendar {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    background-color: white;
   }
   
   /* Anpassungen für den Kalender Header */
@@ -156,12 +154,13 @@
   }
   
   .rbc-day-number {
-    color: black;
+    color: white;
     font-weight: bold;
+    background-color: white;
   }
   
   .rbc-day:hover {
-    background-color: #f0f0f0;
+    background-color: transparent;
     cursor: pointer;
   }
   
@@ -185,11 +184,15 @@
   margin-bottom: 10px;  
 }
 
+.rbc-toolbar-label {
+  font-size: large;
+}
+
 /* Spezifische Styling für die einzelnen Buttons in der Toolbar */
 .rbc-toolbar button {
   margin: 0 5px; 
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 17px;
   border-radius: 4px;
   border: none;
   background-color: #007BFF;
@@ -200,6 +203,10 @@
 
 .rbc-toolbar button:hover {
   background-color: #0056b3; 
+}
+
+.rbc-toolbar-date-cell {
+  background-color: white;
 }
 
 .rbc-toolbar .rbc-btn-group {

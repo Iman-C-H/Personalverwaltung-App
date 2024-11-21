@@ -24,7 +24,6 @@ function EmployeeList() {
         setSelectedEmployee(employee);
         setIsEditing(false);
         setShowCalendar(false);
-        setShowCalendar(false);
         setShowDocuments(false);
     };
 
@@ -97,47 +96,48 @@ function EmployeeList() {
 
     return (
         <div>
-            {!showCalendar && !showDocuments && !isEditing && <h2>Mitarbeiterliste</h2>}
-            {!selectedEmployee ? (
-            <ul className={styles['employee-list']}>
-                {employees.map(employee => (
-                    <li key={employee.id} onClick={() => handleEmployeeClick(employee)}>
-                        {employee.firstName} {employee.lastName} - {employee.department}
-                    </li>
-                ))}
-            </ul>
-         ) : (
-            <div className={styles['employee-detail-container']}>
-                {!isEditing ? (
-                <div>
-                    {renderEmployeeDetails(selectedEmployee)}
-                    {showCalendar === true && (
-                        <>
-                            <Abwesenheitskalender 
-                            employee={selectedEmployee} 
-                            onClose={() => setShowCalendar(false)} />
-                            
-                        </>
-                    )}
-
-                    {showDocuments && (
-                        <>
-                        <EmployeeDocuments
-                        employeeId={selectedEmployee.id}
-                        onClose={() => setShowDocuments(false)}
-                        />
-                        </>
-                    )}   
-                </div>
-            ) : (
-                <EditEmployeeDetail
-                    employee={selectedEmployee}
-                    onSave={handleSave}
-                    onCancel={handleCancelEdit}
-                    />
+            {/* Mitarbeiterliste nur anzeigen, wenn weder Kalender noch Dokumente geöffnet sind */}
+            {!showCalendar && !showDocuments && !isEditing && !selectedEmployee && <h2>Mitarbeiterliste</h2>}
+            {!showCalendar && !showDocuments && !isEditing && !selectedEmployee && (
+                <ul className={styles['employee-list']}>
+                    {employees.map(employee => (
+                        <li key={employee.id} onClick={() => handleEmployeeClick(employee)}>
+                            {employee.firstName} {employee.lastName} - {employee.department}
+                        </li>
+                    ))}
+                </ul>
             )}
-         </div>
-        )}
+            
+            {/* Mitarbeiter Detail Container wird nur angezeigt, wenn weder Kalender noch Dokumente angezeigt werden */}
+            {!showCalendar && !showDocuments && selectedEmployee && (
+                <div className={styles['employee-detail-container']}>
+                    {!isEditing ? (
+                        <div>
+                            {renderEmployeeDetails(selectedEmployee)}
+                        </div>
+                    ) : (
+                        <EditEmployeeDetail
+                            employee={selectedEmployee}
+                            onSave={handleSave}
+                            onCancel={handleCancelEdit}
+                        />
+                    )}
+                </div>
+            )}
+
+            {/* Kalender und Dokumente werden separat angezeigt */}
+            {showCalendar && (
+                <Abwesenheitskalender
+                    employee={selectedEmployee}
+                    onClose={() => setShowCalendar(false)}
+                />
+            )}
+            {showDocuments && (
+                <EmployeeDocuments
+                    employeeId={selectedEmployee.id}
+                    onClose={() => setShowDocuments(false)}
+                />
+            )}
         </div>
     );
 }

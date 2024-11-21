@@ -96,25 +96,8 @@ function Abwesenheitskalender({employee, onClose}) {
     return (
         <div 
         className="abwesenheitskalender-container"
-        style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '90vh',  
-            backgroundColor: '#f4f4f9',
-          }}
           >
-           <div
-           className="abwesenheitskkalender-wrapper"
-        style={{
-          width: '80%',  // 80% der Bildschirmbreite
-          maxWidth: '1200px',
-          padding: '20px',
-          borderRadius: '8px',
-          backgroundColor: 'white',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',  // Schatten um den Kalender
-        }}
-       >
+           <div className="abwesenheitskkalender-wrapper">
             <button className="zuruck-button" onClick={onClose} style={{ marginBottom: '20px' }}>Zurück zu Mitarbeiterdetails</button>
             <h2 className="abwesenheitskalender-header" style={{ textAlign: 'center', marginBottom: '20px' }}>Abwesenheitsplan für {employee.firstName} {employee.lastName}</h2>
             <div className="abwesenheitskalender-form">
