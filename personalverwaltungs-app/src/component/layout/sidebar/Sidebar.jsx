@@ -32,8 +32,8 @@ function SideBar() {
           </Link>
         </li>
         <li>
-          <a href="#4" className="sbbutton">
-            Offene Stellen
+          <a href="/bewerbungen" className="sbbutton">
+            Bewerbungen
           </a>
         </li>
       </ul>
