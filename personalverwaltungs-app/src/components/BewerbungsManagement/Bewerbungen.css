@@ -1,56 +1,79 @@
-  .card-body{
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    overflow: hidden;
-    padding: 15px;
-  }
-  
-  .card-header {
-    padding: 10px 15px;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .card-header h5 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .card-body .text-muted {
-    color: #888;
-  }
-  
-  .border {
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-  }
-  
-  .bg-light {
-    background-color: #fdfafa;
-  }
-  
-  .bg-primary {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .bg-secondary {
-    background-color: #6c757d;
-    color: #fff;
-  }
-  
-  .bg-success {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  .bg-danger {
-    background-color: #dc3545;
-    color: #fff;
-  }
-  
+.card-body {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  overflow-y: auto;  /* Ermöglicht vertikales Scrollen */
+  max-height: 500px;  /* Maximalhöhe für den Container */
+  padding: 15px;
+}
+
+.card-header {
+  padding: 10px 15px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-header h5 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-body .text-muted {
+  color: #888;
+}
+
+.border {
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+}
+
+.bg-light {
+  background-color: #fdfafa;
+}
+
+.bg-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.bg-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.bg-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Zusätzliche Klasse für Bewerberboxen */
+.bewerber-box {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.bewerber-box h6 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bewerber-box small {
+  font-size: 0.875rem;
+}
+
+.bewerber-box .badge {
+  font-size: 0.875rem;
+  padding: 5px 10px;
+}
+
   

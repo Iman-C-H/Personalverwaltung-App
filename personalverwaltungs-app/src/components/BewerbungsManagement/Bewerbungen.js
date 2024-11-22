@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./Bewerbungen.css";
 
 function BewerbungsVerwaltung() {
-  // Initiale Dummy-Daten für Bewerbungen
   const [bewerbungen, setBewerbungen] = useState([
     {
       id: 1,
@@ -13,7 +12,7 @@ function BewerbungsVerwaltung() {
       kontaktEmail: "max.mustermann@example.com",
       herkunft: "Manuell",
       lebenslauf: null,
-      detailsVisible: false,  // Flag für Sichtbarkeit der Details
+      detailsVisible: false,
     },
     {
       id: 2,
@@ -24,49 +23,49 @@ function BewerbungsVerwaltung() {
       kontaktEmail: "anna.beispiel@example.com",
       herkunft: "Manuell",
       lebenslauf: null,
-      detailsVisible: false,  // Flag für Sichtbarkeit der Details
-    }
+      detailsVisible: false,
+    },
   ]);
-  const [importLink, setImportLink] = useState('');
+
+  const [importLink, setImportLink] = useState("");
   const [dragOver, setDragOver] = useState(false);
 
-  // Drag & Drop Handler
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setDragOver(true);  
+  // Bewerbung löschen
+  const deleteBewerbung = (id) => {
+    setBewerbungen((prev) => prev.filter((bewerbung) => bewerbung.id !== id));
   };
 
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setDragOver(false);
+  // Details ein-/ausblenden
+  const toggleDetails = (id) => {
+    setBewerbungen((prev) =>
+      prev.map((bewerbung) =>
+        bewerbung.id === id
+          ? { ...bewerbung, detailsVisible: !bewerbung.detailsVisible }
+          : bewerbung
+      )
+    );
   };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setDragOver(false);
-    const files = e.dataTransfer.files;
-
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const importedBewerbung = {
-          id: Date.now(),
-          name: file.name.replace(/\.[^/.]+$/, ""),
-          position: "Nicht spezifiziert",
-          status: "Neu",
-          bewerbungsDatum: new Date().toISOString().split("T")[0],
-          kontaktEmail: "",
-          herkunft: "Manuell",
-          lebenslauf: event.target?.result,
-          detailsVisible: false,  // Flag für Sichtbarkeit der Details
-        };
-        setBewerbungen((prev) => [...prev, importedBewerbung]);
-      };
-      reader.readAsDataURL(file);
-    });
+  // Funktion für den zyklischen Statuswechsel
+  const statusToggle = (id) => {
+    setBewerbungen((prev) =>
+      prev.map((bewerbung) =>
+        bewerbung.id === id
+          ? {
+              ...bewerbung,
+              status:
+                bewerbung.status === "Neu"
+                  ? "Interview"
+                  : bewerbung.status === "Interview"
+                  ? "Angenommen"
+                  : "Neu",
+            }
+          : bewerbung
+      )
+    );
   };
 
-  // Import von Jobportalen (Dummy-Import)
+  // Bewerbungen von einem Jobportal importieren
   const importVonJobportal = () => {
     if (importLink.includes("linkedin.com")) {
       const neueBewerbung = {
@@ -95,135 +94,157 @@ function BewerbungsVerwaltung() {
       setBewerbungen((prev) => [...prev, neueBewerbung]);
       setImportLink("");
     } else {
-      alert("Unterstütztes Jobportal wurde nicht erkannt");
+      alert("Unterstütztes Jobportal wurde nicht erkannt.");
     }
-  };
-
-  // Status einer Bewerbung ändern
-  const statusAendern = (id, neuerStatus) => {
-    setBewerbungen((prev) =>
-      prev.map((bewerbung) =>
-        bewerbung.id === id ? { ...bewerbung, status: neuerStatus } : bewerbung
-      )
-    );
-  };
-
-  // Toggle-Details anzeigen
-  const toggleDetails = (id) => {
-    setBewerbungen((prev) =>
-      prev.map((bewerbung) =>
-        bewerbung.id === id
-          ? { ...bewerbung, detailsVisible: !bewerbung.detailsVisible }
-          : bewerbung
-      )
-    );
   };
 
   return (
     <div className="container py-4">
-      {/* Import Card */}
-      <div className="card mb-4">
-        <div className="card-header">
-          <h5>Bewerbungen Importieren</h5>
-        </div>
-        <div className="card-body">
-          {/* Link Import */}
-          <div className="mb-3 d-flex">
-            <input
-              type="text"
-              className="form-control me-2"
-              placeholder="Link zur Bewerbung (LinkedIn, Indeed)"
-              value={importLink}
-              onChange={(e) => setImportLink(e.target.value)}
-            />
-            <button className="btn btn-primary" onClick={importVonJobportal}>
-              Importieren
-            </button>
-          </div>
-
-          {/* Drag & Drop Bereich */}
-          <div
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            className={`border p-4 text-center ${
-              dragOver ? "bg-light border-primary" : "bg-white border-secondary"
-            }`}
-          >
-            <p className="text-muted mb-2">
-              Ziehen Sie den Lebenslauf hierher, um ihn hochzuladen.
-            </p>
-            <input type="file" accept=".pdf,.doc,.docx" className="d-none" />
-          </div>
-        </div>
-      </div>
-
-      {/* Bewerbungsliste */}
-      <div className="card">
-        <div className="card-header">
-          <h5>Bewerbungen</h5>
-        </div>
-        <div className="card-body">
-          {bewerbungen.length === 0 ? (
-            <p className="text-muted">Keine Bewerbungen vorhanden.</p>
-          ) : (
-            bewerbungen.map((bewerbung) => (
-              <div
-                key={bewerbung.id}
-                className="d-flex justify-content-between align-items-center border-bottom py-2"
-              >
-                <div>
-                  <h6 className="mb-0">{bewerbung.name}</h6>
-                  <small>{bewerbung.position}</small>
-                  <div className="d-flex align-items-center mt-1">
-                    <span className="badge bg-secondary me-2">
-                      {bewerbung.herkunft}
-                    </span>
-                    <span
-                      className={`badge ${
-                        bewerbung.status === "Neu"
-                          ? "bg-primary"
-                          : bewerbung.status === "Interview"
-                          ? "bg-warning"
-                          : bewerbung.status === "Angenommen"
-                          ? "bg-success"
-                          : "bg-danger"
-                      }`}
-                    >
-                      {bewerbung.status}
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <button
-                    className="btn btn-outline-primary btn-sm me-2"
-                    onClick={() => statusAendern(bewerbung.id, "Interview")}
-                  >
-                    Zum Interview
-                  </button>
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => toggleDetails(bewerbung.id)}
-                  >
-                    {bewerbung.detailsVisible ? "Details verstecken" : "Details anzeigen"}
-                  </button>
-                </div>
+      <div className="row">
+        {/* Import-Bereich */}
+        <div className="col-12 mb-4">
+          <div className="card">
+            <div className="card-header">
+              <h5>Bewerbungen importieren</h5>
+            </div>
+            <div className="card-body">
+              {/* Link Import */}
+              <div className="mb-3 d-flex">
+                <input
+                  type="text"
+                  className="form-control me-2"
+                  placeholder="Link zur Bewerbung (LinkedIn, Indeed)"
+                  value={importLink}
+                  onChange={(e) => setImportLink(e.target.value)}
+                />
+                <button className="btn btn-primary" onClick={importVonJobportal}>
+                  Importieren
+                </button>
               </div>
-            ))
-          )}
 
-          {/* Details anzeigen */}
-          {bewerbungen.map(
-            (bewerbung) =>
-              bewerbung.detailsVisible && (
-                <div key={bewerbung.id} className="mt-3 p-3 border bg-light">
-                  <h6>Details:</h6>
-                  <p><strong>Email:</strong> {bewerbung.kontaktEmail}</p>
-                  <p><strong>Bewerbungsdatum:</strong> {bewerbung.bewerbungsDatum}</p>
-                  <p><strong>Lebenslauf:</strong> {bewerbung.lebenslauf ? "Vorhanden" : "Nicht hochgeladen"}</p>
-                </div>
-              )
-          )}
+              {/* Drag & Drop Bereich */}
+              <div
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setDragOver(true);
+                }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setDragOver(false);
+                  const files = e.dataTransfer.files;
+                  Array.from(files).forEach((file) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                      const neueBewerbung = {
+                        id: Date.now(),
+                        name: file.name.replace(/\.[^/.]+$/, ""),
+                        position: "Nicht spezifiziert",
+                        status: "Neu",
+                        bewerbungsDatum: new Date().toISOString().split("T")[0],
+                        kontaktEmail: "",
+                        herkunft: "Manuell",
+                        lebenslauf: reader.result,
+                        detailsVisible: false,
+                      };
+                      setBewerbungen((prev) => [...prev, neueBewerbung]);
+                    };
+                    reader.readAsDataURL(file);
+                  });
+                }}
+                className={`border p-4 text-center ${
+                  dragOver ? "bg-light border-primary" : "bg-white border-secondary"
+                }`}
+              >
+                <p className="text-muted mb-2">
+                  Ziehen Sie die Lebensläufe hierher, um sie hochzuladen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bewerbungsliste */}
+        <div className="col-12">
+          <div className="card">
+            <div className="card-header">
+              <h5>Bewerbungen</h5>
+            </div>
+            <div className="card-body">
+              {bewerbungen.length === 0 ? (
+                <p className="text-muted">Keine Bewerbungen vorhanden.</p>
+              ) : (
+                bewerbungen.map((bewerbung) => (
+                  <div
+                    key={bewerbung.id}
+                    className="bewerber-box position-relative border mb-3 p-3"
+                  >
+                    {/* Schließen-Button */}
+                    <button
+                      className="btn-close position-absolute"
+                      style={{ top: "10px", right: "10px" }}
+                      onClick={() => deleteBewerbung(bewerbung.id)}
+                      aria-label="Close"
+                    ></button>
+
+                    {/* Bewerbung-Details */}
+                    <h6 className="mb-0">{bewerbung.name}</h6>
+                    <small>{bewerbung.position}</small>
+                    <div className="d-flex align-items-center mt-1">
+                      <span className="badge bg-secondary me-2">
+                        {bewerbung.herkunft}
+                      </span>
+                      <span
+                        className={`badge ${
+                          bewerbung.status === "Neu"
+                            ? "bg-primary"
+                            : bewerbung.status === "Interview"
+                            ? "bg-warning"
+                            : "bg-success"
+                        }`}
+                      >
+                        {bewerbung.status}
+                      </span>
+                    </div>
+                    <div className="mt-2">
+                      <button
+                        className="btn btn-outline-primary btn-sm me-2"
+                        onClick={() => statusToggle(bewerbung.id)}
+                      >
+                        Status ändern
+                      </button>
+                      <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => toggleDetails(bewerbung.id)}
+                      >
+                        {bewerbung.detailsVisible
+                          ? "Details verstecken"
+                          : "Details anzeigen"}
+                      </button>
+                    </div>
+
+                    {/* Details anzeigen */}
+                    {bewerbung.detailsVisible && (
+                      <div className="mt-3 p-3 border bg-light">
+                        <h6>Details:</h6>
+                        <p>
+                          <strong>Email:</strong> {bewerbung.kontaktEmail}
+                        </p>
+                        <p>
+                          <strong>Bewerbungsdatum:</strong>{" "}
+                          {bewerbung.bewerbungsDatum}
+                        </p>
+                        <p>
+                          <strong>Lebenslauf:</strong>{" "}
+                          {bewerbung.lebenslauf ? "Vorhanden" : "Nicht hochgeladen"}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

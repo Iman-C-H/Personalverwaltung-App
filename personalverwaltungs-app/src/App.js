@@ -28,7 +28,7 @@ function App() {
           <Route path="/dokumente" Component={Dokumente}></Route>
           <Route path="/eventplan" Component={Eventplan}></Route>
           <Route path="/allgemeinedokumente" Component={AllgemeineDokumente}></Route>
-          <Route path="bewerbungen" Component={BewerbungsVerwaltung}></Route>
+          <Route path="/bewerbungen" Component={BewerbungsVerwaltung}></Route>
         </Routes>
         <Footer />
       </div>

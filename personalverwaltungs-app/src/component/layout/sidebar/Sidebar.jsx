@@ -32,9 +32,9 @@ function SideBar() {
           </Link>
         </li>
         <li>
-          <a href="/bewerbungen" className="sbbutton">
+          <Link to="/bewerbungen" className="sbbutton">
             Bewerbungen
-          </a>
+          </Link>
         </li>
       </ul>
 
