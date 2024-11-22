@@ -15,7 +15,8 @@ function HomePage() {
       location.pathname.startsWith("/dokumente") ||
       location.pathname.startsWith("/allgemeinedokumente") ||
       location.pathname.startsWith("/eventplan") ||
-      location.pathname.startsWith("/mitarbeiter")
+      location.pathname.startsWith("/mitarbeiter") ||
+      location.pathname.startsWith("/bewerbungen")
     ) {
       setShowWelcome(false);  
     } else {
